@@ -28,6 +28,27 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [toast, setToast] = useState(null);
 
+  // Enterprise Dual Theme State (Light = SAP Fiori / B2B; Dark = Obsidian / Linear)
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('aura_theme');
+    if (saved) return saved === 'dark';
+    return false; // Default to clean corporate Enterprise Light mode
+  });
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('aura_theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('aura_theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => !prev);
+  };
+
   const [isNewOrderModalOpen, setIsNewOrderModalOpen] = useState(false);
   const [selectedOrderForDetails, setSelectedOrderForDetails] = useState(null);
 
@@ -106,15 +127,15 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0F1D] text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#09090B] text-slate-900 dark:text-zinc-100 flex flex-col font-sans transition-colors duration-200">
       
       {/* Toast Notification Banner */}
       {toast && (
         <div
           className={`fixed bottom-6 right-6 z-50 px-4 py-3 rounded-xl shadow-2xl text-xs font-bold border transition-all animate-in slide-in-from-bottom-5 duration-200 flex items-center space-x-2 ${
             toast.type === 'error'
-              ? 'bg-red-500/20 text-red-200 border-red-500/40'
-              : 'bg-emerald-500/20 text-emerald-200 border-emerald-500/40 backdrop-blur-md'
+              ? 'bg-red-500/20 text-red-700 dark:text-red-200 border-red-500/40'
+              : 'bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 border-emerald-500/40 backdrop-blur-md'
           }`}
         >
           <span>{toast.type === 'error' ? '⚠️' : '✅'}</span>
@@ -129,6 +150,8 @@ export default function App() {
         onOpenNewOrder={() => setIsNewOrderModalOpen(true)}
         onRefresh={loadAllData}
         loading={loading}
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
       />
 
       {/* Main Body */}
@@ -186,7 +209,7 @@ export default function App() {
       />
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-[#0B1120] py-4 text-center text-xs text-slate-500">
+      <footer className="border-t border-slate-200 dark:border-zinc-800 bg-white dark:bg-[#0E0F12] py-4 text-center text-xs text-slate-500 dark:text-zinc-500 transition-colors duration-200">
         <p>AuraSupply Fulfillment Portal • Developed by <b>Muhammad Irfan Firdaus</b> • Modeled after Hilti Enterprise IT QA</p>
       </footer>
 

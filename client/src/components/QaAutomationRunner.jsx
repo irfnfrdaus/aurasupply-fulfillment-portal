@@ -83,21 +83,21 @@ export default function QaAutomationRunner({ qaRuns, onExecuteQa, loading }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Controls Column */}
-        <div className="bg-[#0F172A] p-5 rounded-xl border border-slate-800 space-y-4">
-          <h3 className="text-xs uppercase font-extrabold text-slate-400 tracking-wider flex items-center space-x-2">
-            <Terminal className="w-4 h-4 text-sky-400" />
+        <div className="bg-white dark:bg-[#121316] p-5 rounded-xl border border-slate-200 dark:border-zinc-800 space-y-4 shadow-xs transition-colors duration-200">
+          <h3 className="text-xs uppercase font-extrabold text-slate-600 dark:text-zinc-400 tracking-wider flex items-center space-x-2">
+            <Terminal className="w-4 h-4 text-[#0F2C59] dark:text-sky-400" />
             <span>Test Execution Parameters</span>
           </h3>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
               Target Tenant Environment
             </label>
             <select
               value={selectedTenant}
               onChange={(e) => setSelectedTenant(e.target.value)}
               disabled={isExecuting}
-              className="w-full bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-lg p-2.5 focus:outline-none focus:border-sky-500 font-medium"
+              className="w-full bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 text-slate-900 dark:text-zinc-200 text-xs rounded-lg p-2.5 focus:outline-none focus:border-[#0F2C59] dark:focus:border-sky-500 font-medium"
             >
               {tenants.map((t) => (
                 <option key={t.id} value={t.id}>
@@ -108,14 +108,14 @@ export default function QaAutomationRunner({ qaRuns, onExecuteQa, loading }) {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
               Automated Regression Suite
             </label>
             <select
               value={selectedSuite}
               onChange={(e) => setSelectedSuite(e.target.value)}
               disabled={isExecuting}
-              className="w-full bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-lg p-2.5 focus:outline-none focus:border-sky-500 font-medium"
+              className="w-full bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 text-slate-900 dark:text-zinc-200 text-xs rounded-lg p-2.5 focus:outline-none focus:border-[#0F2C59] dark:focus:border-sky-500 font-medium"
             >
               {suites.map((s) => (
                 <option key={s} value={s}>
@@ -129,16 +129,16 @@ export default function QaAutomationRunner({ qaRuns, onExecuteQa, loading }) {
             <button
               onClick={handleRunSuite}
               disabled={isExecuting}
-              className="w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-xl font-bold text-xs bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 shadow-lg shadow-emerald-500/20 transition-all transform active:scale-95 disabled:opacity-50"
+              className="w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-xl font-bold text-xs bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/20 transition-all transform active:scale-95 disabled:opacity-50"
             >
               {isExecuting ? (
                 <>
-                  <RefreshCw className="w-4 h-4 animate-spin text-slate-950" />
+                  <RefreshCw className="w-4 h-4 animate-spin text-white" />
                   <span>Executing Regression Suite...</span>
                 </>
               ) : (
                 <>
-                  <Play className="w-4 h-4 fill-slate-950" />
+                  <Play className="w-4 h-4 fill-white" />
                   <span>Execute Automated Suite</span>
                 </>
               )}
@@ -146,18 +146,18 @@ export default function QaAutomationRunner({ qaRuns, onExecuteQa, loading }) {
           </div>
 
           {/* Quick Specs */}
-          <div className="p-3 bg-slate-900/80 rounded-lg border border-slate-800 text-[11px] text-slate-400 space-y-1.5">
+          <div className="p-3 bg-slate-50 dark:bg-zinc-900/80 rounded-lg border border-slate-200 dark:border-zinc-800 text-[11px] text-slate-600 dark:text-zinc-400 space-y-1.5">
             <div className="flex justify-between">
               <span>Engine:</span>
-              <span className="text-slate-200 font-mono">Tricentis Tosca Protocol (Sim)</span>
+              <span className="text-slate-900 dark:text-zinc-200 font-mono font-semibold">Tricentis Tosca Protocol (Sim)</span>
             </div>
             <div className="flex justify-between">
               <span>Parallel Workers:</span>
-              <span className="text-slate-200 font-mono">4 Virtual Agents</span>
+              <span className="text-slate-900 dark:text-zinc-200 font-mono font-semibold">4 Virtual Agents</span>
             </div>
             <div className="flex justify-between">
               <span>Assertion Checks:</span>
-              <span className="text-emerald-400 font-mono font-bold">Tax, Schema, Inventory</span>
+              <span className="text-emerald-700 dark:text-emerald-400 font-mono font-bold">Tax, Schema, Inventory</span>
             </div>
           </div>
         </div>
@@ -227,19 +227,19 @@ export default function QaAutomationRunner({ qaRuns, onExecuteQa, loading }) {
       </div>
 
       {/* Historical Regression Runs Audit */}
-      <div className="bg-[#0F172A] border border-slate-800 rounded-xl overflow-hidden shadow-sm">
-        <div className="px-5 py-3 border-b border-slate-800 flex items-center justify-between">
-          <h3 className="font-bold text-xs text-white uppercase tracking-wider">
+      <div className="bg-white dark:bg-[#121316] border border-slate-200 dark:border-zinc-800 rounded-xl overflow-hidden shadow-xs transition-colors duration-200">
+        <div className="px-5 py-3 border-b border-slate-200 dark:border-zinc-800 flex items-center justify-between">
+          <h3 className="font-bold text-xs text-slate-900 dark:text-white uppercase tracking-wider">
             Regression Execution Audit Log
           </h3>
-          <span className="text-xs text-slate-400">
+          <span className="text-xs text-slate-500 dark:text-zinc-400">
             Total Logged Runs: <b>{qaRuns.length}</b>
           </span>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-[#0A0F1D] text-slate-400 uppercase font-bold text-[10px] tracking-wider border-b border-slate-800">
+          <table className="w-full text-left text-xs">
+            <thead className="bg-[#0F2C59] dark:bg-zinc-900 text-white dark:text-zinc-200 uppercase font-bold text-[10.5px] tracking-wider">
               <tr>
                 <th className="py-3 px-4">Run ID</th>
                 <th className="py-3 px-4">Tenant Partition</th>
@@ -251,31 +251,31 @@ export default function QaAutomationRunner({ qaRuns, onExecuteQa, loading }) {
                 <th className="py-3 px-4 text-center">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 font-medium">
+            <tbody className="divide-y divide-slate-150 dark:divide-zinc-800 font-medium text-slate-700 dark:text-zinc-300">
               {qaRuns.map((run) => (
-                <tr key={run.id} className="hover:bg-slate-800/40 transition">
-                  <td className="py-3 px-4 font-mono font-bold text-sky-400">{run.id}</td>
-                  <td className="py-3 px-4 font-semibold text-slate-200">{run.tenant_id}</td>
-                  <td className="py-3 px-4 text-slate-300">{run.test_suite}</td>
+                <tr key={run.id} className="hover:bg-slate-50 dark:hover:bg-zinc-800/40 transition">
+                  <td className="py-3 px-4 font-mono font-bold text-[#0F2C59] dark:text-sky-400">{run.id}</td>
+                  <td className="py-3 px-4 font-semibold text-slate-900 dark:text-zinc-200">{run.tenant_id}</td>
+                  <td className="py-3 px-4 text-slate-800 dark:text-zinc-300">{run.test_suite}</td>
                   <td className="py-3 px-4 text-center">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-400 dark:border-emerald-800">
                       {run.status}
                     </span>
                   </td>
-                  <td className="py-3 px-4 text-center font-mono">
+                  <td className="py-3 px-4 text-center font-mono font-semibold">
                     {run.passed_tests} / {run.total_tests}
                   </td>
-                  <td className="py-3 px-4 text-right font-mono text-emerald-400 font-bold">
+                  <td className="py-3 px-4 text-right font-mono text-emerald-700 dark:text-emerald-400 font-bold">
                     {run.duration_ms} ms
                   </td>
-                  <td className="py-3 px-4 text-slate-400 text-[11px] font-mono">{run.created_at}</td>
+                  <td className="py-3 px-4 text-slate-500 dark:text-zinc-400 text-[11px] font-mono">{run.created_at}</td>
                   <td className="py-3 px-4 text-center">
                     <button
                       onClick={() => {
                         setSelectedHistoricalRun(run);
                         window.scrollTo({ top: 300, behavior: 'smooth' });
                       }}
-                      className="text-sky-400 hover:text-sky-300 font-semibold text-xs"
+                      className="text-[#0F2C59] hover:underline dark:text-sky-400 dark:hover:text-sky-300 font-bold text-xs"
                     >
                       View Logs
                     </button>
