@@ -1,0 +1,26 @@
+{
+  "name": "aurasupply-fulfillment-portal",
+  "version": "1.0.0",
+  "description": "AuraSupply - Enterprise Supply Chain Fulfillment Portal & QA Test Automation Engine",
+  "scripts": {
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build:client": "cd client && npm run build",
+    "start": "cd server && npm start"
+  },
+  "keywords": [
+    "supply-chain",
+    "order-fulfillment",
+    "qa-automation",
+    "test-automation",
+    "multi-tenant",
+    "enterprise-erp",
+    "sap-s4hana",
+    "react",
+    "nodejs",
+    "sqlite",
+    "tailwind-css"
+  ],
+  "author": "Muhammad Irfan Firdaus",
+  "license": "MIT"
+}
