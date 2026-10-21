@@ -43,8 +43,10 @@ flowchart TD
 ## ✨ Key Enterprise Capabilities
 
 ### 1. 🔄 Multi-Stage Order Fulfillment Lifecycle (Kanban & Table)
-* Realistic enterprise progression:
-  $$\text{Quote Draft} \longrightarrow \text{PO Approved} \longrightarrow \text{Pick \& Pack} \longrightarrow \text{In Transit} \longrightarrow \text{Delivered} \longrightarrow \text{Invoiced}$$
+* **Realistic enterprise progression:**
+  ```text
+  [Quote Draft] ➔ [PO Approved] ➔ [Pick & Pack] ➔ [In Transit] ➔ [Delivered] ➔ [Invoiced & Paid]
+  ```
 * Real-time calculation of Malaysian **8% SST compliance tax** on all enterprise line items.
 * Live tracking number generation and carrier allocation (`DHL Express`, `FedEx Global`, `Line Clear Logistics`, `Direct Fleet`).
 * Support for high-priority corporate accounts (PETRONAS, Inari Amertron, TNB, Gamuda, Hilti).
