@@ -55,14 +55,21 @@ app.get('*', (req, res) => {
   });
 });
 
-// Initialize database and start listening
-initDb().then(() => {
-  app.listen(PORT, () => {
-    console.log('='.repeat(65));
-    console.log(`   🚀 AuraSupply Server & QA Engine is running on port ${PORT}`);
-    console.log(`   🔗 API Gateway:   http://localhost:${PORT}/api/health`);
-    console.log(`   📊 Orders API:    http://localhost:${PORT}/api/orders`);
-    console.log(`   🧪 QA Runner API: http://localhost:${PORT}/api/qa/runs`);
-    console.log('='.repeat(65));
+// Initialize database and start listening (only when executed directly, not when imported in automated tests)
+const isMainModule = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename);
+
+if (isMainModule) {
+  initDb().then(() => {
+    app.listen(PORT, () => {
+      console.log('='.repeat(65));
+      console.log(`   🚀 AuraSupply Server & QA Engine is running on port ${PORT}`);
+      console.log(`   🔗 API Gateway:   http://localhost:${PORT}/api/health`);
+      console.log(`   📊 Orders API:    http://localhost:${PORT}/api/orders`);
+      console.log(`   🧪 QA Runner API: http://localhost:${PORT}/api/qa/runs`);
+      console.log('='.repeat(65));
+    });
   });
-});
+}
+
+export { app };
+export default app;
