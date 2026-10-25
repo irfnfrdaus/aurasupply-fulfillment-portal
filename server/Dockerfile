@@ -4,11 +4,11 @@ FROM node:20-alpine
 # Set working directory inside the container
 WORKDIR /app
 
-# Copy dependency definitions
-COPY package*.json ./
+# Copy package manifest
+COPY package.json ./
 
-# Install clean production dependencies
-RUN npm ci --omit=dev
+# Install production dependencies
+RUN npm install --omit=dev
 
 # Copy the rest of the application code
 COPY . .
